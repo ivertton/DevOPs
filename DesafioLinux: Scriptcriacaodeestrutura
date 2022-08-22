@@ -1,0 +1,36 @@
+#!/bin/bash
+
+#criando diretorios
+sudo mkdir /publico /adm /ven /sec
+
+#criando grupos
+
+groupadd GRP_ADM 
+groupadd GRP_VEN
+groupadd GRP_SEC
+
+#criando usuarios
+sudo usadd carlos -m -s /bin/bash - $(openssl passwd -crypt senha321) -GRP_ADM
+chown carlos:GRP_ADM /adm/
+sudo usadd maria -m -s /bin/bash - $(openssl passwd -crypt senha321) -GRP_ADM
+chown maria:GRP_ADM /adm/
+sudo usadd joao -m -s /bin/bash - $(openssl passwd -crypt senha321) -GRP_ADM
+chown joao:GRP_ADM /adm/
+sudo chmod 770 /adm
+
+sudo usadd debora -m -s /bin/bash - $(openssl passwd -crypt senha321) -GRP_VEN
+chown debora:GRP_VEN /ven/
+sudo usadd sebastiana -m -s /bin/bash - $(openssl passwd -crypt senha321) -GRP_VEN
+chown sebastiana:GRP_VEN /ven/
+sudo usadd roberto -m -s /bin/bash - $(openssl passwd -crypt senha321) -GRP_VEN
+chown roberto:GRP_VEN /ven/
+sudo chmod 770 /ven
+
+sudo usadd josefina -m -s /bin/bash - $(openssl passwd -crypt senha321) -GRP_SEC
+chown josefina:GRP_SEC /sec/
+sudo usadd amanda -m -s /bin/bash - $(openssl passwd -crypt senha321) -GRP_SEC
+chown amanda:GRP_SEC /sec/
+sudo usadd rogerio -m -s /bin/bash - $(openssl passwd -crypt senha321) -GRP_SEC
+chown rogerio:GRP_SEC /sec/
+sudo chmod 770 /sec
+
